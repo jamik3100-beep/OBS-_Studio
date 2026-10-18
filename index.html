@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <title>Capture Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Capture Studio bosh sahifa">
+        <span class="brand-icon" aria-hidden="true"><span></span></span>
+        <span>capture<span class="brand-light">studio</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="local-badge"><span class="local-dot"></span> Faqat shu qurilmada</span>
+        <a class="app-download" href="/download" download="Capture-Studio-Windows.zip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"></path></svg>
+          Ilovani yuklab olish
+        </a>
+        <span class="version">BETA</span>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="main-column">
+        <div class="heading-row">
+          <div>
+            <p class="eyebrow">YOZUV STUDIYASI</p>
+            <h1>Yozuvni boshlang</h1>
+            <p class="subtitle">Ekran yoki kamerangizni yozib, videoni kompyuteringizga saqlang.</p>
+          </div>
+          <div class="record-state" id="recordState"><span class="state-dot"></span><span id="stateText">Tayyor</span></div>
+        </div>
+
+        <div class="preview" id="preview">
+          <video id="previewVideo" autoplay muted playsinline></video>
+          <div class="preview-placeholder" id="placeholder">
+            <div class="placeholder-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="27" rx="4"></rect><path d="M18 42h12M24 36v6M19 19l11 6-11 6z"></path></svg>
+            </div>
+            <strong>Ko‘rinish shu yerda chiqadi</strong>
+            <span>Yozishni boshlash uchun manbani tanlang</span>
+          </div>
+          <div class="preview-overlay"><span class="live-pill" id="livePill"><i></i> LIVE</span><span class="preview-time" id="previewTime">00:00:00</span></div>
+        </div>
+
+        <div class="controls">
+          <button class="record-button" id="recordButton" type="button">
+            <span class="record-button-icon" id="recordButtonIcon"></span>
+            <span id="recordButtonText">Yozishni boshlash</span>
+          </button>
+          <button class="icon-button" id="stopButton" type="button" disabled aria-label="Yozishni to‘xtatish" title="Yozishni to‘xtatish">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"></rect></svg>
+          </button>
+          <div class="control-hint"><span class="shortcut">●</span> Yozuv faqat qurilmangizda saqlanadi</div>
+        </div>
+
+        <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+
+        <section class="saved-card" id="savedCard" hidden>
+          <div class="saved-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"></path></svg>
+          </div>
+          <div class="saved-info"><strong>Yozuv tayyor</strong><span id="savedDetails">Videoni yuklab olishingiz mumkin.</span></div>
+          <a class="download-button" id="downloadButton" href="#" download="capture-studio-recording.webm">Videoni saqlash</a>
+        </section>
+      </div>
+
+      <aside class="settings">
+        <div class="settings-heading"><div><p class="eyebrow">SOZLAMALAR</p><h2>Manba va audio</h2></div><span class="settings-mark">✳</span></div>
+
+        <fieldset class="source-field">
+          <legend>YOZUV MANBAI</legend>
+          <label class="source-option">
+            <input type="radio" name="source" value="screen" checked>
+            <span class="option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8m-4-4v4"></path></svg>
+            </span>
+            <span class="option-copy"><strong>Ekran</strong><small>Oyna yoki ekranni yozish</small></span>
+            <span class="radio-indicator"></span>
+          </label>
+          <label class="source-option">
+            <input type="radio" name="source" value="camera">
+            <span class="option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"></rect><path d="m16 10 5-3v10l-5-3z"></path></svg>
+            </span>
+            <span class="option-copy"><strong>Kamera</strong><small>Veb-kamera va mikrofon</small></span>
+            <span class="radio-indicator"></span>
+          </label>
+          <label class="source-option">
+            <input type="radio" name="source" value="both">
+            <span class="option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="14" rx="2"></rect><rect class="camera-shape" x="13" y="11" width="8" height="8" rx="2"></rect></svg>
+            </span>
+            <span class="option-copy"><strong>Ekran + kamera</strong><small>Kamera ekranning burchagida</small></span>
+            <span class="radio-indicator"></span>
+          </label>
+        </fieldset>
+
+        <div class="divider"></div>
+        <div class="setting-row">
+          <div class="setting-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0m-7 7v3m-4 0h8"></path></svg>
+          </div>
+          <div class="setting-copy"><strong>Mikrofon</strong><small>Ovoz yozuvga qo‘shiladi</small></div>
+          <label class="switch"><input type="checkbox" id="micToggle" checked><span></span><span class="sr-only">Mikrofonni yoqish</span></label>
+        </div>
+        <label class="select-wrap" for="micSelect"><span>Mikrofon qurilmasi</span><select id="micSelect"><option value="">Standart mikrofon</option></select><span class="select-arrow">⌄</span></label>
+
+        <div class="tip">
+          <span class="tip-icon">i</span>
+          <p><strong>Ekran ovozi</strong><br>Ekran ulash oynasida “Share system audio” (tizim ovozini ulash) belgisini yoqing. Bu imkoniyat brauzeringizga bog‘liq.</p>
+        </div>
+        <div class="format-row"><span>Fayl formati</span><span class="format-tag">WEBM <i>•</i> 720p+</span></div>
+      </aside>
+    </section>
+    <footer><span>Capture Studio <span class="footer-separator">/</span> brauzerda ishlaydi</span><span>Video internetga yuborilmaydi</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
