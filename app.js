@@ -6,7 +6,6 @@
   const placeholder = document.querySelector('#placeholder');
   const recordState = document.querySelector('#recordState');
   const stateText = document.querySelector('#stateText');
-  const recordButtonText = document.querySelector('#recordButtonText');
   const previewTime = document.querySelector('#previewTime');
   const notice = document.querySelector('#notice');
   const savedCard = document.querySelector('#savedCard');
@@ -239,9 +238,6 @@
         showNotice(`Yozuv xatosi: ${event.error?.message || 'MediaRecorder xatosi'}`, true);
         cleanupCapture();
         recordButton.disabled = false;
-        recordButton.classList.remove('is-recording');
-        recordButtonText.textContent = 'Yozishni boshlash';
-        document.querySelector('#recordButtonIcon').style.borderRadius = '';
         stopButton.disabled = true;
         recordState.classList.remove('recording');
         stateText.textContent = 'Tayyor';
@@ -254,11 +250,7 @@
         }, { once: true });
       });
       recorder.start(1000);
-      recordButton.disabled = false;
-      recordButton.classList.add('is-recording');
-      recordButton.setAttribute('aria-label', 'Yozishni to‘xtatish');
-      recordButtonText.textContent = 'Yozishni to‘xtatish';
-      document.querySelector('#recordButtonIcon').style.borderRadius = '2px';
+      recordButton.disabled = true;
       stopButton.disabled = false;
       recordState.classList.add('recording');
       stateText.textContent = 'Yozilmoqda';
@@ -279,7 +271,6 @@
   function stopRecording() {
     if (recorder?.state === 'recording') {
       stopButton.disabled = true;
-      recordButton.disabled = true;
       stateText.textContent = 'Saqlanmoqda';
       recorder.stop();
     }
@@ -302,10 +293,6 @@
     }
     cleanupCapture();
     recordButton.disabled = false;
-    recordButton.classList.remove('is-recording');
-    recordButton.removeAttribute('aria-label');
-    recordButtonText.textContent = 'Yozishni boshlash';
-    document.querySelector('#recordButtonIcon').style.borderRadius = '';
     stopButton.disabled = true;
     recordState.classList.remove('recording');
     stateText.textContent = 'Tayyor';
@@ -333,10 +320,7 @@
     recorder = null;
   }
 
-  recordButton.addEventListener('click', () => {
-    if (recorder?.state === 'recording') stopRecording();
-    else startRecording();
-  });
+  recordButton.addEventListener('click', startRecording);
   stopButton.addEventListener('click', stopRecording);
   micToggle.addEventListener('change', () => { micSelect.disabled = !micToggle.checked; });
   navigator.mediaDevices?.addEventListener?.('devicechange', refreshMicrophones);

@@ -58,14 +58,12 @@ h1 { font-size: 26px; font-weight: 700; line-height: 1.2; }
 .controls { min-height: 82px; display: flex; align-items: center; gap: 11px; }
 .record-button { min-height: 42px; padding: 0 18px; border: 0; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: var(--lime); color: #14170e; font-size: 11px; font-weight: 700; cursor: pointer; transition: background .15s, transform .15s; }
 .record-button:hover { background: #d8ff84; transform: translateY(-1px); }
-.record-button:disabled { opacity: .55; cursor: wait; transform: none; }
+.record-button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
 .record-button-icon { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
-.record-button.is-recording { background: #282a31; color: #f1f2f5; border: 1px solid #3d4049; }
-.record-button.is-recording .record-button-icon { border-radius: 2px; background: var(--red); }
-.icon-button { width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid #343740; border-radius: 7px; background: #1b1d22; color: #a5a9b3; cursor: pointer; }
-.icon-button:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
-.icon-button:disabled { opacity: .35; cursor: not-allowed; }
-.icon-button svg { width: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+.stop-button { min-height: 42px; padding: 0 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #56343a; border-radius: 7px; background: #2a1e22; color: #ff929a; font-size: 11px; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s; }
+.stop-button:hover:not(:disabled) { border-color: #a54b55; background: #382126; }
+.stop-button:disabled { opacity: .38; cursor: not-allowed; }
+.stop-button svg { width: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; }
 .control-hint { margin-left: auto; display: flex; align-items: center; gap: 7px; color: #8b909b; font-size: 10px; }
 .shortcut { color: var(--lime); font-size: 9px; }
 .notice { margin: 0 0 15px; padding: 10px 12px; border: 1px solid #463a2c; border-radius: 6px; background: #28231d; color: #e4c595; font-size: 11px; line-height: 1.5; }
